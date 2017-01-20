@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170120123509) do
+ActiveRecord::Schema.define(version: 20170120213113) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,10 @@ ActiveRecord::Schema.define(version: 20170120123509) do
     t.date     "finish_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "band_id"
+    t.integer  "place_id"
+    t.index ["band_id"], name: "index_availabilities_on_band_id", using: :btree
+    t.index ["place_id"], name: "index_availabilities_on_place_id", using: :btree
   end
 
   create_table "bands", force: :cascade do |t|
@@ -32,6 +36,10 @@ ActiveRecord::Schema.define(version: 20170120123509) do
     t.integer  "set_time"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.integer  "user_id"
+    t.integer  "genre_id"
+    t.index ["genre_id"], name: "index_bands_on_genre_id", using: :btree
+    t.index ["user_id"], name: "index_bands_on_user_id", using: :btree
   end
 
   create_table "genres", force: :cascade do |t|
@@ -48,6 +56,8 @@ ActiveRecord::Schema.define(version: 20170120123509) do
     t.string   "place_category"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_places_on_user_id", using: :btree
   end
 
   create_table "show_makers", force: :cascade do |t|
@@ -55,6 +65,14 @@ ActiveRecord::Schema.define(version: 20170120123509) do
     t.text     "available_equipment"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.integer  "user_id"
+    t.integer  "show_id"
+    t.integer  "place_id"
+    t.integer  "band_id"
+    t.index ["band_id"], name: "index_show_makers_on_band_id", using: :btree
+    t.index ["place_id"], name: "index_show_makers_on_place_id", using: :btree
+    t.index ["show_id"], name: "index_show_makers_on_show_id", using: :btree
+    t.index ["user_id"], name: "index_show_makers_on_user_id", using: :btree
   end
 
   create_table "shows", force: :cascade do |t|
@@ -82,4 +100,13 @@ ActiveRecord::Schema.define(version: 20170120123509) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "availabilities", "bands"
+  add_foreign_key "availabilities", "places"
+  add_foreign_key "bands", "genres"
+  add_foreign_key "bands", "users"
+  add_foreign_key "places", "users"
+  add_foreign_key "show_makers", "bands"
+  add_foreign_key "show_makers", "places"
+  add_foreign_key "show_makers", "shows"
+  add_foreign_key "show_makers", "users"
 end
