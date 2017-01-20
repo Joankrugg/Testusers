@@ -6,4 +6,5 @@ class Place < ApplicationRecord
   validates :category, presence: true
   validates :place_address, presence: true
   validates :capacity, presence: true
+  mount_uploader :place_photo, PhotoUploader
 end
