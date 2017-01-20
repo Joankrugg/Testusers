@@ -1,0 +1,10 @@
+<%= simple_form_for @place, remote: true do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :place_name, placeholder: "Nom de l'établissement", error: "Le nom de l'établissement est obligatoire" %>
+  <%= f.input :place_address, placeholder: "Adresse de l'établissement", error: "Une adresse est obligatoire" %>
+  <%= f.input :place_category, placeholder: "choisissez un type d'établissement", error: "selectionnez" %>
+  <%= f.input :capacity, placeholder: "Durée du set en minutes", error: "Tapez un chiffre" %>
+  <%= f.input :place_facebook, placeholder: "lien de la page facebook de l'établissement" %>
+  <%= f.input :place_photo, placeholder: "les jolies photos attirent la sympathie =D " %>
+  <%= f.button :submit, class: 'btn btn-primary' %>
+<% end %>
