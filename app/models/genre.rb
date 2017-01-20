@@ -1,4 +1,4 @@
 class Genre < ApplicationRecord
-  has_many :bands
-  has_many :places
+  belongs_to :bands
+  belongs_to :places
 end
