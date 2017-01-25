@@ -1,0 +1,20 @@
+<% content_for :title do %>
+  <%= @user.first_name %> <%= @user.last_name %>
+<% end %>
+
+<div class="profile-header-wrapper">
+  <div class="container profile-header-container text-center">
+    <div class="profile-header-infos">
+        <% avatar_url = @user.facebook_picture_url || "http://placehold.it/30x30"  %>
+        <%= image_tag avatar_url %>
+      <h1><%= @user.first_name.try(:capitalize) %> <%= @user.last_name.try(:capitalize) %></h1>
+      <h2><%= @user.level.try(:name) %> - <%= @user.stars %></h2>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+

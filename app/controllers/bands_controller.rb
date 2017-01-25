@@ -10,9 +10,12 @@ class BandsController < ApplicationController
   end
 
   def create
-    @band = Band.new(band_params)
-    @band.save
-    redirect_to band_path(@band)
+    @band = current_user.bands.new(band_params)
+      if @band.save
+        redirect_to bands_path
+      else
+        render 'new'
+      end
   end
 
   def show

@@ -1,7 +1,1 @@
-<h1>Band#index</h1>
-<% @bands.each do |band| %>
-  <h2><%= band.band_name %></h2>
-  <p><%= band.band_address%></p>
-  <p><%= band.set_time%></p>
-  <p><%= band.members_number%></p>
-<% end %>
+<%= render 'band_card' %>

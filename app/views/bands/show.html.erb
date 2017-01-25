@@ -1,3 +1,19 @@
-<h1>Bands#show</h1>
-<p>Find me in app/views/bands/show.html.erb</p>
-<%= cl_image_tag @band.band_photo, height: 300, width: 400, crop: :fill %>
+<% content_for :title do %>
+  <%= @band.band_name %>
+<% end %>
+
+<div class="media">
+  <div class="media-body">
+    <div class="media-section">
+      <h1><%= @band.band_name %></h1>
+        <% avatar_url = @band.user.facebook_picture_url || "http://placehold.it/30x30"  %>
+        <%= image_tag avatar_url, class: 'avatar' %>
+      <div class="media-user"><%= @band.user&.first_name %> <%= @band.user&.last_name.try(:[], 0) %>
+      </div>
+    </div>
+
+    <div class="media-section">
+      <%= cl_image_tag @band.band_photo, height: 300, width: 400, crop: :fill %>
+    </div>
+  </div>
+</div>
