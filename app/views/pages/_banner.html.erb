@@ -1,7 +1,11 @@
 <div class="banner" style="background-image: url(<%= image_path 'ma-semaine-rocknroll.jpg'%>);">
   <div class="banner-content">
-    <h1>Rock'n'rolla</h1>
+    <h1>ROCK'N'ROLLA</h1>
     <p>Tune makers, Place owners & Party lovers</p>
-    <a class="btn btn-primary btn-lg">J'en suis!</a>
+      <div class="row">
+        <%= link_to t(".top_call_to_action", default: "J'ai un band"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to t(".top_call_to_action", default: "J'ai un lieu"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to t(".top_call_to_action", default: "J'organise"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      </div>
   </div>
 </div>

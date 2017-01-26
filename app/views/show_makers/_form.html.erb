@@ -1,0 +1,6 @@
+<%= simple_form_for @show_maker, remote: true do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :transport, placeholder: "cochez si vous en avez" %>
+  <%= f.input :available_equipment, placeholder: "décrivez l'équipment à disposition si vous en avez (150 mots)" %>
+  <%= f.button :submit, class: 'btn btn-primary' %>
+<% end %>

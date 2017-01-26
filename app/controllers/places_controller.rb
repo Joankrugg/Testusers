@@ -10,9 +10,12 @@ class PlacesController < ApplicationController
   end
 
   def create
-    @place = Place.new(place_params)
-    @place.save
-    redirect_to place_path(@place)
+    @place = current_user.places.new(place_params)
+      if @place.save
+        redirect_to place_path(@place)
+      else
+        render 'new'
+      end
   end
 
   def show
