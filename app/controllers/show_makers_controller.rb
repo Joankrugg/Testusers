@@ -41,7 +41,7 @@ class ShowMakersController < ApplicationController
     @show_maker = ShowMaker.find(params[:id])
   end
 
-  def place_params
+  def show_maker_params
     params.require(:show_maker).permit(:transport, :available_equipment)
   end
 end

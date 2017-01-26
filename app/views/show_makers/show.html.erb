@@ -1,2 +1,13 @@
-<h1>ShowMakers#show</h1>
-<p>Find me in app/views/show_makers/show.html.erb</p>
+<div class="media">
+  <div class="media-body">
+    <div class="media-section">
+        <% avatar_url = @show_maker.user.facebook_picture_url || "http://placehold.it/30x30"  %>
+        <%= image_tag avatar_url, class: 'avatar' %>
+      <div class="media-user"><%= @show_maker.user&.first_name %> <%= @show_maker.user&.last_name.try(:[], 0) %>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+  <%= link_to "Delete", show_maker_path(@show_maker), :confirm => "Are you sure?", :method => :delete %>
+</div>
