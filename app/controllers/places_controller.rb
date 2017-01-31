@@ -1,9 +1,22 @@
 class PlacesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_place, only: [:show, :edit, :update, :destroy]
 
   def index
-    @places = Place.all
+    search = params[:search]
+    @places = Place.where.not(latitude: nil, longitude: nil)
+    if search.try(:place_address) && search[:place_address] !=""
+      place_address = search[:place_address]
+      @places = @places.near(search[:place_address], 100)
+    end
+
+    @hash = Gmaps4rails.build_markers(@places) do |place, marker|
+      marker.lat place.latitude
+      marker.lng place.longitude
+
+    end
   end
+
 
   def new
     @place = Place.new
@@ -12,21 +25,27 @@ class PlacesController < ApplicationController
   def create
     @place = current_user.places.new(place_params)
       if @place.save
-        redirect_to place_path(@place)
+        redirect_to @place
       else
         render 'new'
       end
   end
 
   def show
+    @place = Place.find(params[:id])
+    @place_coordinates = {lat: @place.latitude, lng: @place.longitude}
+
   end
 
   def edit
   end
 
   def update
-    @place.update(place_params)
-    redirect_to place_path(@place)
+    if @place.update(place_params)
+      redirect_to @place
+    else
+      render :edit
+    end
   end
 
   def destroy

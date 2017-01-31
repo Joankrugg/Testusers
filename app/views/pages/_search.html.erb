@@ -1,0 +1,6 @@
+<div class="wrapper form-inline text-center">
+  <%= simple_form_for :search, url: places_path do |f| %>
+    <%= f.input :place_address, placeholder: 'Où voulez vous faire du rocknrolla ?', label: false, input_html: { size: 50 } %>
+    <%= f.button :submit %>
+  <% end %>
+</div>

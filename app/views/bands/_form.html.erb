@@ -1,4 +1,4 @@
-<%= simple_form_for (@band), remote: true do |f| %>
+<%= simple_form_for (@band) do |f| %>
   <%= f.error_notification %>
   <%= f.input :band_name, placeholder: "Nom du Groupe", error: "Le nom du groupe est obligatoire" %>
   <%= f.input :rehearsal_address, placeholder: "Adresse de répétition", error: "Une adresse est obligatoire" %>

@@ -7,4 +7,6 @@ class Place < ApplicationRecord
   validates :place_address, presence: true
   validates :capacity, presence: true
   mount_uploader :place_photo, PhotoUploader
+  geocoded_by :place_address
+  after_validation :geocode, if: :place_address_changed?
 end
