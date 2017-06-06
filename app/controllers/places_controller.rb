@@ -5,8 +5,8 @@ class PlacesController < ApplicationController
   def index
     search = params[:search]
     @places = Place.where.not(latitude: nil, longitude: nil)
-    if search.try(:place_address) && search[:place_address] !=""
-      place_address = search[:place_address]
+    if search.try(:[], :place_address) && search[:place_address] != ""
+      @place_address = search[:place_address]
       @places = @places.near(search[:place_address], 100)
     end
 

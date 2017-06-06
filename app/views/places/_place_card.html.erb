@@ -8,7 +8,7 @@
       <%= cl_image_tag place.place_photo, height: 150, width: 200, crop: :fill %>
 
     <div class='product-body'>
-        <h3><%= link_to place.place_name, place_path(place) %></h3>
+        <h3><%= link_to place.place_name, place_path(place), {class: "btn btn-primary"} %></h3>
         <p><%= place.place_address %></p>
         <p><%= place.place_category %></p>
         <p><%= place.capacity %></p>

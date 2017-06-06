@@ -8,10 +8,30 @@
         <% avatar_url = @user.facebook_picture_url || "http://placehold.it/30x30"  %>
         <%= image_tag avatar_url %>
       <h1><%= @user.first_name.try(:capitalize) %> <%= @user.last_name.try(:capitalize) %></h1>
-      <h2><%= @user.level.try(:name) %> - <%= @user.stars %></h2>
     </div>
   </div>
 </div>
+<div class="container">
+  <%= render 'search' %>
+</div>
+
+<%= link_to "create a band",new_band_path %>
+<br>
+<%= link_to "update a band",edit_band_path %>
+<br>
+<%= link_to "delete a band",new_band_path %>
+<br>
+<%= link_to "create a place",new_place_path %>
+<br>
+<%= link_to "update a place",edit_place_path %>
+<br>
+<%= link_to "delete a place",new_band_path %>
+<br>
+<%= link_to "create a show",new_show_path %>
+<br>
+<%= link_to "update a show",edit_show_path %>
+<br>
+<%= link_to "cancel a show",new_band_path %>
 
 
 

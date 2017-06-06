@@ -12,12 +12,10 @@ class UsersController < ApplicationController
     if @user.save
       respond_to do |format|
         format.html { redirect_to @user }
-        format.js
       end
     else
       respond_to do |format|
         format.html { render 'users/show' }
-        format.js
       end
     end
   end
