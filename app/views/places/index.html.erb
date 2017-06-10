@@ -1,2 +1,41 @@
-<%= render 'place_card' %>
+<div class="container">
+  <div class="row">
+  <% @places.each do |place| %>
+      <div class="col-md-4">
+        <div class="profile-card text-center">
+          <div class="profile-info">
+            <h2 class="hvr-underline-from-center"><%= link_to place.place_name, place_path(place) %><span>genre musical</span></h2>
+              <p><%= place.place_address %></p>
+              <p><%= place.place_category %></p>
+              <p><%= place.capacity %></p>
+            <a href="http://www.twitter.com/mike_youngg"><i class="fa fa-twitter fa-2x"></i></a>
+            <a href="mailto:michael_y@live.co.uk"><i class="fa fa-envelope-o fa-2x"></i></a>
+            <a href="http://www.linkedin.com"><i class="fa fa-linkedin fa-2x"></i></a>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
 
+<div class="container">
+    <div id="map" style="width: 800px; height: 600px"></div>
+</div>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      var handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
+        }
+      });
+    });
+  <% end %>
+<% end %>

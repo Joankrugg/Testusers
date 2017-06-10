@@ -2,17 +2,39 @@
   <div class="row">
     <% @bands.each do |band| %>
       <div class="col-md-4">
-        <div class="card">
-        <%= image_tag current_user.facebook_picture_url %>
-          <div class="card-description">
-            <h3><%= link_to band.band_name, band_path(band) %></h3>
+        <div class="profile-card text-center">
+          <div class="profile-info">
+            <h2 class="hvr-underline-from-center"><%= link_to band.band_name, band_path(band) %><span>genre musical</span></h2>
             <p><%= band.rehearsal_address %></p>
             <p><%= band.set_time %></p>
             <p><%= band.members_number %></p>
-            <div class='product-count'><%= band.id %></div>
+            <a href="http://www.twitter.com/mike_youngg"><i class="fa fa-twitter fa-2x"></i></a>
+            <a href="mailto:michael_y@live.co.uk"><i class="fa fa-envelope-o fa-2x"></i></a>
+            <a href="http://www.linkedin.com"><i class="fa fa-linkedin fa-2x"></i></a>
           </div>
         </div>
       </div>
     <% end %>
   </div>
 </div>
+<div class="container">
+    <div id="map" style="width: 800px; height: 600px"></div>
+</div>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      var handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
+        }
+      });
+    });
+  <% end %>
+<% end %>

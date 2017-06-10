@@ -1,1 +1,18 @@
-<%= render 'show_maker_card' %>
+<div class="container">
+  <div class="row">
+    <% @show_makers.each do |show_maker| %>
+      <div class="col-md-4">
+        <div class="profile-card text-center">
+          <div class="profile-info">
+            <h2 class="hvr-underline-from-center">genre musical</h2>
+              <p><%= show_maker.transport %></p>
+              <p><%= show_maker.available_equipment %></p>
+            <a href="http://www.twitter.com/mike_youngg"><i class="fa fa-twitter fa-2x"></i></a>
+            <a href="mailto:michael_y@live.co.uk"><i class="fa fa-envelope-o fa-2x"></i></a>
+            <a href="http://www.linkedin.com"><i class="fa fa-linkedin fa-2x"></i></a>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

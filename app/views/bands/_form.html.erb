@@ -1,7 +1,7 @@
 <%= simple_form_for (@band) do |f| %>
   <%= f.error_notification %>
   <%= f.input :band_name, placeholder: "Nom du Groupe", error: "Le nom du groupe est obligatoire" %>
-  <%= f.input :rehearsal_address, placeholder: "Adresse de répétition", error: "Une adresse est obligatoire" %>
+  <%= f.input :rehearsal_address, placeholder: "Ville de référence", error: "Une adresse est obligatoire" %>
   <%= f.input :members_number, placeholder: "Nombre de musiciens", error: "Tapez un chiffre" %>
   <%= f.input :set_time, placeholder: "Durée du set en minutes", error: "Tapez un chiffre" %>
   <%= f.input :band_facebook, placeholder: "lien de la page facebook du groupe" %>

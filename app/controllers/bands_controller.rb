@@ -1,5 +1,5 @@
 class BandsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:index]
   before_action :set_band, only: [:show, :edit, :update, :destroy]
 
   def index
