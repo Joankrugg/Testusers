@@ -1,1 +1,18 @@
-<%= render 'band_card' %>
+<div class="container">
+  <div class="row">
+    <% @bands.each do |band| %>
+      <div class="col-md-4">
+        <div class="card">
+        <%= image_tag current_user.facebook_picture_url %>
+          <div class="card-description">
+            <h3><%= link_to band.band_name, band_path(band) %></h3>
+            <p><%= band.rehearsal_address %></p>
+            <p><%= band.set_time %></p>
+            <p><%= band.members_number %></p>
+            <div class='product-count'><%= band.id %></div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
