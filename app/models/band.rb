@@ -1,6 +1,8 @@
 class Band < ApplicationRecord
 
   belongs_to :user, required: true
+  belongs_to :type, required: true
+  belongs_to :genre, required: true
   has_many :shows, through: :show_makers
   has_many :availabilities, dependent: :destroy
   validates :band_name, presence: true

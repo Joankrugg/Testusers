@@ -5,3 +5,19 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+print "Destroying everything"
+Type.destroy_all
+Genre.destroy_all
+
+
+print "Creating types"
+Type.create({ name: 'Reprises' })
+Type.create({ name: 'Compos' })
+Type.create({ name: 'Mixte' })
+puts "      💥"
+
+print "Creating genres"
+Genre.create({ name: 'Rock' })
+Genre.create({ name: 'Electronique' })
+Genre.create({ name: 'Hip Hop' })
+puts "      💥"
