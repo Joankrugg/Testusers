@@ -1,22 +1,30 @@
 <% content_for :title do %>
   <%= @band.band_name %>
 <% end %>
+<div class="container text-center">
+  <div class="media">
+    <div class="media-body">
+      <div class="media-section">
+        <h1><%= @band.band_name %></h1>
+        <h1><%= @band.rehearsal_address %></h1>
+        <h1><%= @band.members_number %>members</h1>
+        <h1><%= @band.set_time %>minutes</h1>
+        <h3><%= @band.band_mersh %></h3>
+        <h3><%= @band.band_facebook %></h3>
 
-<div class="media">
-  <div class="media-body">
-    <div class="media-section">
-      <h1><%= @band.band_name %></h1>
-        <% avatar_url = @band.user.facebook_picture_url || "http://placehold.it/30x30"  %>
-        <%= image_tag avatar_url, class: 'avatar' %>
-      <div class="media-user"><%= @band.user&.first_name %> <%= @band.user&.last_name.try(:[], 0) %>
+          <% avatar_url = @band.user.facebook_picture_url || "http://placehold.it/30x30"  %>
+          <%= image_tag avatar_url, class: 'avatar' %>
+        <div class="media-user"><%= @band.user&.first_name %> <%= @band.user&.last_name.try(:[], 0) %>
+        </div>
+      </div>
+
+      <div class="media-section">
+        <%= cl_image_tag @band.band_photo, height: 300, width: 400, crop: :fill %>
       </div>
     </div>
-
-    <div class="media-section">
-      <%= cl_image_tag @band.band_photo, height: 300, width: 400, crop: :fill %>
-    </div>
+  </div>
+  </div>
+    <%= link_to "Delete", band_path(@band), :confirm => "Are you sure?", :method => :delete %>
   </div>
 </div>
-</div>
-  <%= link_to "Delete", band_path(@band), :confirm => "Are you sure?", :method => :delete %>
-</div>
+
