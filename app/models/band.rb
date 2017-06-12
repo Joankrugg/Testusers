@@ -9,5 +9,6 @@ class Band < ApplicationRecord
   validates :members_number, presence: true
   validates :rehearsal_address, presence: true
   validates :set_time, presence: true
+  validates :transport_autonomy, presence: true
   mount_uploader :band_photo, PhotoUploader
 end
