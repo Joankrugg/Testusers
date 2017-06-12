@@ -43,6 +43,6 @@ class ShowMakersController < ApplicationController
   end
 
   def show_maker_params
-    params.require(:show_maker).permit(:transport, :available_equipment)
+    params.require(:show_maker).permit(:transport, :available_equipment, :structure_id)
   end
 end

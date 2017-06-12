@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170612110032) do
+ActiveRecord::Schema.define(version: 20170612110810) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,9 +78,11 @@ ActiveRecord::Schema.define(version: 20170612110032) do
     t.integer  "show_id"
     t.integer  "place_id"
     t.integer  "band_id"
+    t.integer  "structure_id"
     t.index ["band_id"], name: "index_show_makers_on_band_id", using: :btree
     t.index ["place_id"], name: "index_show_makers_on_place_id", using: :btree
     t.index ["show_id"], name: "index_show_makers_on_show_id", using: :btree
+    t.index ["structure_id"], name: "index_show_makers_on_structure_id", using: :btree
     t.index ["user_id"], name: "index_show_makers_on_user_id", using: :btree
   end
 
@@ -138,5 +140,6 @@ ActiveRecord::Schema.define(version: 20170612110032) do
   add_foreign_key "show_makers", "bands"
   add_foreign_key "show_makers", "places"
   add_foreign_key "show_makers", "shows"
+  add_foreign_key "show_makers", "structures"
   add_foreign_key "show_makers", "users"
 end

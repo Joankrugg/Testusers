@@ -3,4 +3,5 @@ class ShowMaker < ApplicationRecord
   has_many :shows
   has_many :bands
   has_many :places
+  belongs_to :structure, required: true
 end
