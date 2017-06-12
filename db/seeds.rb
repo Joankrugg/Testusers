@@ -9,6 +9,7 @@ print "Destroying everything"
 Type.destroy_all
 Genre.destroy_all
 Structure.destroy_all
+Category.destroy_all
 
 print "Creating types"
 Type.create({ name: 'Reprises' })
@@ -25,6 +26,17 @@ puts "      💥"
 print "Creating structures"
 Structure.create({ name: 'Association' })
 Structure.create({ name: 'Oneself' })
-Structure.create({ name: 'band' })
+Structure.create({ name: 'Band' })
 Structure.create({ name: 'Firm' })
+puts "      💥"
+
+print "Creating categories"
+Category.create({ name: 'Bar' })
+Category.create({ name: 'Theater' })
+Category.create({ name: 'Arena' })
+Category.create({ name: 'Zenith' })
+Category.create({ name: 'Concert hall' })
+Category.create({ name: 'Stadium' })
+Category.create({ name: 'Other' })
+
 puts "      💥"

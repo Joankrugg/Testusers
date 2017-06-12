@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170612110810) do
+ActiveRecord::Schema.define(version: 20170612120027) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,12 @@ ActiveRecord::Schema.define(version: 20170612110810) do
     t.index ["user_id"], name: "index_bands_on_user_id", using: :btree
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "genres", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -58,13 +64,14 @@ ActiveRecord::Schema.define(version: 20170612110810) do
     t.string   "place_facebook"
     t.integer  "capacity"
     t.string   "place_photo"
-    t.string   "place_category"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.integer  "user_id"
     t.integer  "genre_id"
     t.float    "latitude"
     t.float    "longitude"
+    t.integer  "category_id"
+    t.index ["category_id"], name: "index_places_on_category_id", using: :btree
     t.index ["genre_id"], name: "index_places_on_genre_id", using: :btree
     t.index ["user_id"], name: "index_places_on_user_id", using: :btree
   end
@@ -135,6 +142,7 @@ ActiveRecord::Schema.define(version: 20170612110810) do
   add_foreign_key "bands", "genres"
   add_foreign_key "bands", "types"
   add_foreign_key "bands", "users"
+  add_foreign_key "places", "categories"
   add_foreign_key "places", "genres"
   add_foreign_key "places", "users"
   add_foreign_key "show_makers", "bands"
