@@ -7,5 +7,6 @@
   <%= f.input :place_facebook, placeholder: "lien de la page facebook de l'établissement" %>
   <%= f.input :place_photo, placeholder: "les jolies photos attirent la sympathie =D " %>
   <%= f.input :place_photo_cache, as: :hidden %>
+  <%= f.association :genre %>
   <%= f.button :submit, class: 'btn btn-primary' %>
 <% end %>
