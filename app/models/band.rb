@@ -10,5 +10,7 @@ class Band < ApplicationRecord
   validates :rehearsal_address, presence: true
   validates :set_time, presence: true
   validates :transport_autonomy, presence: true
+  has_attachments :photos, maximum: 6
   mount_uploader :band_photo, PhotoUploader
+  mount_uploader :audio, AudioUploader
 end

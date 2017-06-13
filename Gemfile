@@ -16,12 +16,16 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'devise'
-gem 'cloudinary', '1.1.0'
+gem 'cloudinary', '1.1.7'
 gem 'carrierwave'
 gem 'omniauth-facebook'
 gem "geocoder"
 gem "coffee-rails"
 gem "gmaps4rails"
+gem 'attachinary', github: 'assembler/attachinary'
+gem 'jquery-fileupload-rails'
+gem 'carrierwave-audio'
+
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"

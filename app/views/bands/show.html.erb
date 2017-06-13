@@ -21,10 +21,16 @@
       <div class="media-section">
         <%= cl_image_tag @band.band_photo, height: 300, width: 400, crop: :fill %>
       </div>
+      <div class="media-section">
+        <%= @band.audio %>
+      </div>
     </div>
   </div>
   </div>
     <%= link_to "Delete", band_path(@band), :confirm => "Are you sure?", :method => :delete %>
   </div>
+  <% @band.photos.each do |photo| %>
+    <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
+  <% end %>
 </div>
 

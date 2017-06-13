@@ -10,8 +10,10 @@
   <%= f.input :band_photo, placeholder: "les jolies photos attirent la sympathie =D " %>
   <%= f.association :type %>
   <%= f.association :genre %>
+  <%= f.input :photos, as: :attachinary %>
   <%= f.input :band_photo_cache, as: :hidden %>
   <%= f.input :involvement %>
+  <%= f.input :audio %>
   <%= f.input :transport_autonomy, placeholder: "êtes vous véhiculé(es)" %>
   <%= f.submit class: 'btn btn-primary' %>
 <% end %>
