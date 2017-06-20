@@ -11,6 +11,7 @@
         <h1><%= @band.set_time %>minutes</h1>
         <h3><%= @band.band_mersh %></h3>
         <h3><%= @band.band_facebook %></h3>
+        <h3><%= @band.tracks %></h3>
 
           <% avatar_url = @band.user.facebook_picture_url || "http://placehold.it/30x30"  %>
           <%= image_tag avatar_url, class: 'avatar' %>
@@ -21,9 +22,6 @@
       <div class="media-section">
         <%= cl_image_tag @band.band_photo, height: 300, width: 400, crop: :fill %>
       </div>
-      <div class="media-section">
-        <%= @band.audio %>
-      </div>
     </div>
   </div>
   </div>
@@ -32,5 +30,8 @@
   <% @band.photos.each do |photo| %>
     <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
   <% end %>
+
+    <%= @band.tracks.each %>
+
 </div>
 

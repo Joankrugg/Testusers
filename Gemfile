@@ -24,7 +24,7 @@ gem "coffee-rails"
 gem "gmaps4rails"
 gem 'attachinary', github: 'assembler/attachinary'
 gem 'jquery-fileupload-rails'
-gem 'carrierwave-audio'
+gem 'paperclip', '~> 5.1'
 
 
 source 'https://rails-assets.org' do

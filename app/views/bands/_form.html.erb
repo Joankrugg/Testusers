@@ -5,15 +5,16 @@
   <%= f.input :members_number, placeholder: "Nombre de musiciens", error: "Tapez un chiffre" %>
   <%= f.input :set_time, placeholder: "Durée du set en minutes", error: "Tapez un chiffre" %>
   <%= f.input :age, placeholder: "age moyen du band", error: "Tapez un chiffre" %>
-  <%= f.input :band_facebook, placeholder: "lien de la page facebook du groupe" %>
-  <%= f.input :band_mersh, placeholder: "avez vous du mersh ?" %>
-  <%= f.input :band_photo, placeholder: "les jolies photos attirent la sympathie =D " %>
-  <%= f.association :type %>
-  <%= f.association :genre %>
-  <%= f.input :photos, as: :attachinary %>
+  <%= f.input :band_facebook, placeholder: "lien de la page facebook du groupe", error: "Tapez un chiffre" %>
+  <%= f.association :type , error: "Tapez un chiffre" %>
+  <%= f.association :genre , error: "Tapez un chiffre" %>
+  <%= f.input :band_photo, placeholder: "les jolies photos attirent la sympathie =D ", error: "Tapez un chiffre"  %>
   <%= f.input :band_photo_cache, as: :hidden %>
-  <%= f.input :involvement %>
-  <%= f.input :audio %>
+  <%= f.input :tracks, as: :attachinary %>
+  <%= f.input :photos, as: :attachinary %>
+  <%= f.input :involvement, error: "Tapez un chiffre"  %>
   <%= f.input :transport_autonomy, placeholder: "êtes vous véhiculé(es)" %>
+  <%= f.input :band_mersh, placeholder: "avez vous du mersh ?", error: "Tapez un chiffre"  %>
   <%= f.submit class: 'btn btn-primary' %>
 <% end %>
+

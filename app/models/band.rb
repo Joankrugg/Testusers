@@ -11,6 +11,6 @@ class Band < ApplicationRecord
   validates :set_time, presence: true
   validates :transport_autonomy, presence: true
   has_attachments :photos, maximum: 6
+  has_attachments :tracks, maximum: 3
   mount_uploader :band_photo, PhotoUploader
-  mount_uploader :audio, AudioUploader
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170613145903) do
+ActiveRecord::Schema.define(version: 20170612141445) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,7 +57,6 @@ ActiveRecord::Schema.define(version: 20170613145903) do
     t.integer  "type_id"
     t.text     "involvement"
     t.boolean  "transport_autonomy"
-    t.string   "audio"
     t.index ["genre_id"], name: "index_bands_on_genre_id", using: :btree
     t.index ["type_id"], name: "index_bands_on_type_id", using: :btree
     t.index ["user_id"], name: "index_bands_on_user_id", using: :btree
@@ -119,12 +118,6 @@ ActiveRecord::Schema.define(version: 20170613145903) do
   end
 
   create_table "structures", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "tracks", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
